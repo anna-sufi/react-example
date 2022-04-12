@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import "./index.css";
 import Button from "../Button";
 import Counter from "../Counter";
+import api from "../../Api";
 
 const Product = (props) => {
     const [prod, setProd] = useState({});
@@ -11,27 +12,16 @@ const Product = (props) => {
     }
 
     useEffect(() => {
-		// 	api.getProduct("622c779c77d63f6e70967d1c").then(ans => {
-		// 	console.log(ans);
-		// }
-			// );
-           fetch(`https://api.react-learning.ru/products/${props.id}`, {
-                    headers: {
-                        authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjJmOTk5MmFlNWM0MGMxMGMxMWRmZTQiLCJpYXQiOjE2NDcyODY2ODEsImV4cCI6MTY3ODgyMjY4MX0.WHKXAErKZtY445yXecOFZsx981MuXicJti-okSY-tac`
-                    }
-                }).then(responseHandler).then(ans => {
-                    console.log(ans);
-                    setProd(ans);
-    },);}, [])
-
+			api.getProduct(props.id).then(ans => {
+			console.log(ans);
+           setProd(ans);
+		},);
+        }, [])
+      
     useEffect(() => {
-           fetch(`https://api.react-learning.ru/products/review/${props.id}`, {
-                    headers: {
-                        authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjJmOTk5MmFlNWM0MGMxMGMxMWRmZTQiLCJpYXQiOjE2NDcyODY2ODEsImV4cCI6MTY3ODgyMjY4MX0.WHKXAErKZtY445yXecOFZsx981MuXicJti-okSY-tac`
-                    }
-                }).then(responseHandler).then(ans => {
-                    console.log(ans);
-                    setprodReviews(ans);
+        api.getReviews(props.id).then(ans => {
+			console.log(ans);
+           setprodReviews(ans);
     },);}, [])
 
     return (

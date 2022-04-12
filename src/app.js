@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-
 import Header from "./components/Header/header.jsx";
 import Footer from './components/Footer/index.jsx';
 // import Test from "./components/Test";
 import api from "./Api.js";
 // import data from "./data.json";
-
 import Cart from "./pages/Cart";
 import Catalog from "./pages/Catalog";
 import Contacts from "./pages/Contacts";

@@ -18,13 +18,21 @@ class Api {
         }).then(responseHandler);
     }
 
-    // getProduct({this.id}) {
-    //     return fetch(`${this.path}/products/${this.id}`, {
-    //         headers: {
-    //             authorization: `Bearer ${this.token}`
-    //         }
-    //     }).then(responseHandler);
-    // }
+    getProduct(id) {
+        return fetch(`${this.path}/products/${id}`, {
+            headers: {
+                authorization: `Bearer ${this.token}`
+            }
+        }).then(responseHandler);
+    }
+
+    getReviews(id) {
+        return fetch(`${this.path}/products/review/${id}`, {
+            headers: {
+                authorization: `Bearer ${this.token}`
+            }
+        }).then(responseHandler);
+    }
 
 }
     

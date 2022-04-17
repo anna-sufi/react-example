@@ -7,8 +7,6 @@ class Api {
         this.path = path;
         this.token = token;
         this.id = id;
-
-        
     }
     getProductList() {
         return fetch(`${this.path}/products`, {
@@ -35,8 +33,6 @@ class Api {
     }
 
 }
-    
-
 
 const config = {
     path: 'https://api.react-learning.ru',

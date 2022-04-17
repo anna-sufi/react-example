@@ -12,7 +12,6 @@ import Main from "./pages/Main";
 import Product from "./pages/Product";
 import Profile from "./pages/Profile";
 import {Routes, Route} from "react-router-dom";
-// import FormInput from './components/FormInput/index.jsx';
 import Modal from './components/Modal/index.jsx';
 
 function App () {
@@ -20,9 +19,9 @@ function App () {
     const[searchText,setSearch] = useState("");
 	const [data, setData] = useState([]);
 	const [goods, setGoods] = useState(data);
-	const [cnt, setSearchCnt] = useState(0);
+	const [cnt, setSearchCnt] = useState(0);// количество карточек после поиска
 	const [modalActivity, setModalActivity] = useState(false);
-	const [key, setKey] = useState('');
+	const [store, updStore] = useState([]);// перечень товаров в корзине
 
 	const appHandler = val => {
 		console.log("app", val);
@@ -38,9 +37,7 @@ function App () {
 			setGoods(ans.products);
 		    console.log(ans);
 		    console.log(ans.products);
-			},		
-			);
-	}, [])
+			},);}, [])
 
    	// кастомный вариант внедрения стилей- 
 	// создаем ОБЬЕКТ со стилем:
@@ -51,7 +48,12 @@ function App () {
 	}
 
 	return <>
-	    <Header searchText={searchText} appHandler={appHandler} modalActivity={modalActivity} setModalActivity={setModalActivity}/>
+	    <Header 
+		searchText={searchText} 
+		appHandler={appHandler} 
+		modalActivity={modalActivity} setModalActivity={setModalActivity}
+		store={store}
+		/>
 		
 		{/* ниже в {} внедрется переменная JS  */}
 		{/* <div style={st}>  
@@ -64,12 +66,12 @@ function App () {
 		
 		<main>
 		 <Routes>
-			 <Route path="/cart" element={<Cart name="Корзина"/>}/>
+			 <Route path="/cart" title={cnt} element={<Cart name="Корзина"/>}/>
 			 <Route path="/catalog" element={<Catalog name="Каталог" searchText={searchText} cnt={cnt} goods={goods} />}/>
 			 <Route path="/contacts" element={<Contacts name="Контакты"/>}/>
 			 <Route path="/favorites" element={<Favorites name="Избранное"/>}/>
 			 <Route path="/" element={<Main name="Главная"/>}/>
-			 <Route path="/product/:id" element={<Product name="Товар" />}/>
+			 <Route path="/product/:id" element={<Product name="Товар" store={store} updStore={updStore}/>}/>
 			 <Route path="/profile" element={<Profile name="Личные данные"/>}/>
 		 </Routes>
 		</main>

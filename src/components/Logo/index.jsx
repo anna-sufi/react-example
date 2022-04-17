@@ -8,6 +8,5 @@ const Logo = () => {
         <Link to="/" className="logo">
         <img src={logo} alt="Logo" className="logo_pic"/>
         </Link>
-    )
-}
+    )}
 export default Logo;

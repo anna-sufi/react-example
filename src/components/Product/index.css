@@ -70,9 +70,6 @@
     gap: 10px;
 }
 
-/* .prod_buy_btn {
-    justify-content: space-around;
-} */
 
 .rev_Photo {
     width: 150px;
@@ -95,4 +92,15 @@ h2, h3 {
     border-radius: 15px;
     padding: 10px;
     width: 350px;
+}
+
+.product_btn_buy {
+    height: 30px;
+   border-radius: 15px;
+    background-color: #FFE44D;
+    padding: 5px 15px;
+    cursor: pointer;
+    box-shadow: none;
+    border: 1px solid #FFE44D;
+
 }
